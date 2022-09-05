@@ -436,14 +436,14 @@ STREAM_FORCE_REQUEST:
 	
 	push	{r0}				// preserve nsamples
 	#ifdef SYS_NDS7
-	bl	_call_via_r3
+	bl	mpp_call_r3
 	#else
 	blx	r3
 	#endif
 	push	{r0}
 	
 	ldr	r1,=CopyDataToStream		// copy samples to stream ...
-	bl	_call_via_r1			//
+	bl	mpp_call_r1			//
 	pop	{r0, r1}			// r0 = samples filled, r1 = desired amount
 	
 	sub	r1, r0				// r1 = unsatisfied samples
@@ -466,7 +466,7 @@ _no_samples_output:
 	#ifdef SYS_NDS9
 	
 	ldr	r1,=mmFlushStream
-	bl	_call_via_r1
+	bl	mpp_call_r1
 
 //	ldr	r1,=DrainWriteBuffer
 //	blx	r1

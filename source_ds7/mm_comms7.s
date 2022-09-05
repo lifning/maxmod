@@ -669,7 +669,7 @@ mmMSG_EFFECT:
 	mov	r0, sp
 	
 	ldr	r1,=mmEffectEx
-	bl	_call_via_r1
+	bl	mpp_call_r1
 	
 	add	sp, #12
 	b	ProcessNextMessage
@@ -797,7 +797,7 @@ mmMSG_EFFECTEX:
 	mov	r0, sp
 	
 	ldr	r1,=mmEffectEx
-	bl	_call_via_r1
+	bl	mpp_call_r1
 	
 	add	sp, #12
 	b	ProcessNextMessage
@@ -912,7 +912,7 @@ mmMSG_REVERBCFG:
 	
 	mov	r0, sp
 	ldr	r1,=mmReverbConfigure
-	bl	_call_via_r1
+	bl	mpp_call_r1
 	
 	add	sp, #24
 	

@@ -179,13 +179,13 @@ mmFrame:
 @ update effects
 
 	ldr	r7,=mmUpdateEffects
-	bl	_call_via_r7
+	bl	mpp_call_r7
 
 @ update sub layer
 @ sub layer has 60hz accuracy
 
 	ldr	r7,=mppUpdateSub
-	bl	_call_via_r7
+	bl	mpp_call_r7
 
 @ update main layer and mix samples.
 @ main layer is sample-accurate.
@@ -244,12 +244,12 @@ mmFrame:
 
 	mov	r0, r5
 	ldr	r7,=mmMixerMix	@ mix samples
-	bl	_call_via_r7
+	bl	mpp_call_r7
 
 	PROF_END 0
 
 	ldr	r7,=mppProcessTick
-	bl	_call_via_r7
+	bl	mpp_call_r7
 
 	b	.mpf_mix_advr	@ process more samples
 .mpf_mix:
@@ -263,7 +263,7 @@ mmFrame:
 	mov	r0, r4
 	PROF_START
 	ldr	r1,=mmMixerMix
-	bl	_call_via_r1
+	bl	mpp_call_r1
 	PROF_END 0
 
 	pop	{r4-r7}
@@ -278,7 +278,7 @@ mmFrame:
 
 	PROF_START
 	ldr	r1,=mmMixerMix
-	bl	_call_via_r1
+	bl	mpp_call_r1
 	PROF_END 0
 
 	pop	{r4-r7}
